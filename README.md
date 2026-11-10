@@ -103,7 +103,7 @@ only this library's domain, with no host-application or personal-finance rules.
 To use it, copy the `skills/wealthfolio-cli/` directory into your agent's skills
 directory. Installing the Python package alone does not install the agent skill.
 The skill includes a [uv](https://docs.astral.sh/uv/) launcher with PEP 723 inline
-dependencies pinned to a library commit. It runs without installing the package
+dependencies tracking the library's `main` branch. It runs without installing the package
 into your project's environment:
 
 ```bash
@@ -115,8 +115,14 @@ First use may download Python and dependencies; subsequent runs reuse uv's cache
 The launcher preserves the caller's working directory for relative input paths.
 It requires `WEALTHFOLIO_REST_URL` and `WEALTHFOLIO_PASSWORD` in the process
 environment and does not load `.env` files; help needs no credentials.
-Library updates require an explicit change
-to the launcher's commit pin; transitive dependencies are not fully locked.
+Upstream changes on `main` can change CLI behavior; this setup is not locked to
+a fixed revision. uv may reuse a cached revision. To refresh the library, run:
+
+```bash
+uv run --no-project --upgrade-package python-wealthfolio --script skills/wealthfolio-cli/scripts/wealthfolio_cli.py --help
+```
+
+Transitive dependencies are not fully locked either.
 
 ## Host application integration
 

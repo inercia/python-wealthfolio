@@ -1,10 +1,10 @@
 # /// script
 # requires-python = ">=3.9"
 # dependencies = [
-#   "python-wealthfolio @ git+https://github.com/inercia/python-wealthfolio.git@6fcc2a2e94297fdb77b1f97829c675680499af39",
+#   "python-wealthfolio @ git+https://github.com/inercia/python-wealthfolio.git@main",
 # ]
 # ///
-"""Run the pinned standalone CLI with uv-managed dependencies."""
+"""Run the standalone CLI from main with uv-managed dependencies."""
 
 from os import environ
 

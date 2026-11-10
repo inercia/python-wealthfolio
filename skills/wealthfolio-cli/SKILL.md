@@ -24,15 +24,16 @@ Use the bundled launcher to run the standalone CLI provided by
   not the current project's virtual environment or global Python. First use
   may download Python, build dependencies, and runtime dependencies. Do not
   bypass network or installation permissions. Later runs reuse cached data.
-- The library dependency is pinned to a full Git commit, not a moving branch
-  or a public-registry package. Transitive dependency versions are resolved by
-  uv; they are not fully locked. Do not silently upgrade the library pin or
-  replace it with an unverified package source.
+- The library dependency tracks the public repository's `main` branch, not a
+  fixed commit or a public-registry package. Upstream changes can change CLI
+  behavior; transitive dependencies are not fully locked either. uv may reuse
+  a cached revision. To refresh it, add `--upgrade-package python-wealthfolio`
+  to `uv run`. Do not replace the dependency with an unverified package source.
 - The library repository is public; fetching it needs no GitHub login. If
   access fails, check network access and the dependency URL rather than
   requesting credentials. Do not embed tokens in URLs or ask for secrets in chat.
 - Run launcher `--help`, then `<subcommand> --help` before constructing a
-  command. Help from the pinned CLI is authoritative for names, required
+  command. Help from the running CLI is authoritative for names, required
   fields, supported filters, and input formats. No manual pip install needed.
 - Obtain the endpoint exclusively from `WEALTHFOLIO_REST_URL` and the login
   password exclusively from `WEALTHFOLIO_PASSWORD` in the process environment.

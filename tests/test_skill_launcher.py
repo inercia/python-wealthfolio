@@ -15,6 +15,12 @@ LAUNCHER = (
 
 
 class SkillLauncherTests(unittest.TestCase):
+    def test_dependency_tracks_main(self):
+        self.assertIn(
+            '"python-wealthfolio @ git+https://github.com/inercia/python-wealthfolio.git@main",',
+            LAUNCHER.read_text(encoding="utf-8"),
+        )
+
     def test_dispatch_preserves_arguments_and_exit_status_without_dotenv(self):
         env = {"WEALTHFOLIO_REST_URL": "https://example.invalid", "WEALTHFOLIO_PASSWORD": "test"}
         handler = mock.Mock(side_effect=SystemExit(7))
