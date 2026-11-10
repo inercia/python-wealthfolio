@@ -1,0 +1,45 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "python-wealthfolio"
+version = "0.1.0"
+description = "Hand-rolled Python REST client and CLI for Wealthfolio's own HTTP API."
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.9"
+dependencies = [
+    "requests>=2.32.0",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Office/Business :: Financial :: Investment",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+
+[project.scripts]
+wealthfolio = "wealthfolio.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+wealthfolio = ["py.typed"]
+
+[tool.ruff.lint]
+# Conservative rule set (pyflakes + a handful of pycodestyle error
+# categories) -- correctness/bug-risk only, not style/modernization
+# preferences (e.g. no pyupgrade "UP" rules forcing `X | None` over
+# `Optional[X]`, which would churn a large, stable, heavily-documented
+# codebase for no functional benefit).
+select = ["E4", "E7", "E9", "F"]
