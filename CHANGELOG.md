@@ -4,6 +4,13 @@ All notable changes to `python-wealthfolio` are documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [Unreleased]
+
+### Added
+
+- Standalone CLI agent skill with a uv launcher, pinned library dependency,
+  and environment-only connection settings.
+
 ## [0.1.0]
 
 Initial release of the Python REST client and CLI for Wealthfolio.
